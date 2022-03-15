@@ -11,8 +11,13 @@ import streamlit as st
 import plotly as pt
 
 
-df = pd.read_csv("flights.csv")
-df = df.iloc[1:1000]
+@st.cache()
+def load_data():
+    df = pd.read_csv(
+        'https://github.com/l-heemskerk/streamlit/blob/main/flights.csv'
+    )
+    return df
+
 
 #sidebar
 st.sidebar.header("please filter here:")
