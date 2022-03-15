@@ -7,6 +7,7 @@ Created on Mon Mar 14 08:41:01 2022
 """
 
 import pandas as pd
+import plotly.express as px  # pip install plotly-express
 import streamlit as st
 
 
