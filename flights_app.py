@@ -8,15 +8,11 @@ Created on Mon Mar 14 08:41:01 2022
 
 import pandas as pd
 import streamlit as st
+import plotly_express as px
 
 
-@st.cache()
-def load_data():
-    df = pd.read_csv(
-        'https://github.com/l-heemskerk/streamlit/blob/main/flights.csv'
-    )
-    return df
-
+df = pd.read_csv("flights.csv")
+df = df.iloc[1:1000]
 
 #sidebar
 st.sidebar.header("please filter here:")
@@ -80,7 +76,7 @@ dep_delay_per_carrier = (
     df_selection.groupby(by=["carrier"]).sum()[["dep_delay"]].sort_values(by="dep_delay")
     )
 
-fig_dep_delay = pt.bar(
+fig_dep_delay = px.bar(
     dep_delay_per_carrier,
     y="dep_delay",
     x=dep_delay_per_carrier.index,
@@ -94,7 +90,7 @@ dep_delay_per_origin = (
     df_selection.groupby(by=["dest"]).sum()[["dep_delay"]].sort_values(by="dep_delay")
     )
 
-fig_dep_delay2 = pt.bar(
+fig_dep_delay2 = px.bar(
     dep_delay_per_origin,
     y="dep_delay",
     x=dep_delay_per_origin.index,
