@@ -8,7 +8,7 @@ Created on Mon Mar 14 08:41:01 2022
 
 import pandas as pd
 import streamlit as st
-import plotly as pt
+import plotly_express as px
 
 
 @st.cache()
